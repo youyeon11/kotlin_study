@@ -3,3 +3,4 @@ include("api")
 include("api:consumer")
 findProject(":api:consumer")?.name = "consumer"
 include("gateway")
+include("consumer")
