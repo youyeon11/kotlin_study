@@ -1,10 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.25"
-    kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.3.5"
-    id("io.spring.dependency-management") version "1.1.6"
+    kotlin("jvm") version "1.6.0"
+    kotlin("plugin.spring") version "1.6.10" apply false
+    kotlin("plugin.jpa") version "1.6.0" apply false
+
+    id("org.springframework.boot") version "2.6.3" apply false
+    id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
 }
 
 repositories {
@@ -28,22 +30,21 @@ subprojects {
         plugin("io.spring.dependency-management")
     }
 
-    tasks.withType<KotlinCompile>().configureEach {
+    tasks.withType<KotlinCompile> {
         kotlinOptions {
-            freeCompilerArgs += "-Xjsr305=strict"
-            jvmTarget = "17"
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "11"
         }
     }
 
     tasks.withType<Test> {
         useJUnitPlatform()
     }
-}
 
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter")
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+    }
 }

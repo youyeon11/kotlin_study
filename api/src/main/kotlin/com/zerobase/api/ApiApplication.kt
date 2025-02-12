@@ -1,11 +1,11 @@
-package com.zerobase.fintech
+package com.zerobase.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class FintechApplication
+class ApiApplication
 
 fun main(args: Array<String>) {
-    runApplication<FintechApplication>(*args)
+    runApplication<ApiApplication>(*args)
 }
