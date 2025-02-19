@@ -9,7 +9,7 @@ class LoanReview (
     val userKey: String,
 
     @Column(name = "loan_lmt_amt")
-    val lanLimitedAmount: Long,
+    val loanLimitedAmount: Long,
 
     @Column(name = "loan_intrt")
     val loanInterest: Double
